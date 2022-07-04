@@ -7,7 +7,6 @@ from pybricks.ev3devices import Motor, ColorSensor, TouchSensor
 from pybricks.parameters import Port
 from pybricks.tools import wait, StopWatch
 import sys
-import def_robot as robot
 # import img2num as imgnm
 
 
