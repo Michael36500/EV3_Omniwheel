@@ -1,0 +1,51 @@
+#!/usr/bin/env pybricks-micropython
+from pybricks.hubs import EV3Brick
+from pybricks.ev3devices import Motor, ColorSensor, TouchSensor
+from pybricks.parameters import Port
+from pybricks.tools import wait, StopWatch
+
+
+# where = ve stupních, dokola
+# rychlost = rychlost
+# kolik = o kolik se posune (součet otočení všech motorů)
+def run_m (lu, ru, rd, ld):
+    m_lu.run(lu)
+    m_ru.run(ru)
+    m_ru.run(rd)
+    m_ru.run(ld)
+    global m_lu
+    global m_ru
+    global m_rd
+    global m_ld
+
+# rych = rychlost
+def move(where, rych, kolik):
+    global ev3
+    global m_lu
+    global m_ru
+    global m_rd
+    global m_ld
+
+    # rovně
+    # run_m (1 * rych, 1 * rych, -1 * rych, -1 * rych)
+
+    # doleva
+    # run_m (-1 * rych, 1 * rych, 1 * rych, -1 * rych)
+
+    # dozadu
+    # run_m (-1 * rych, -1 * rych, 1 * rych, 1 * rych)
+
+    # doprava
+    # run_m (1 * rych, -1 * rych, -1 * rych, 1 * rych)
+
+
+
+
+# setup kostka, stopky
+ev3 = EV3Brick()
+
+# setup motory 
+m_lu = Motor(Port.A)
+m_ru = Motor(Port.C)
+m_rd = Motor(Port.B)
+m_ld = Motor(Port.D)
