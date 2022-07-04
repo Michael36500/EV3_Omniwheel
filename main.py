@@ -40,7 +40,7 @@ def stop_m ():
     m_ru.hold()
     m_rd.hold()
     m_ld.hold()
-    wait(2000)
+    wait(500)
 # rych = rychlost
 # def move(where, rych, kolik):
 #     global ev3
@@ -50,22 +50,21 @@ def stop_m ():
 #     global m_ld
 
 
-rych = 20
+rych = 100
 
-# doleva
-run_m (20, -20, -20, 20)
-# run_m (-1 * rych, -1 * rych, 1 * rych, 1 * rych)
-stop_m()
-
-# dopředu
-run_m (1 * rych, -1 * rych, -1 * rych, 1 * rych)
+# dozadu
+run_m (-1 * rych, -1 * rych, 1 * rych, 1 * rych)
 stop_m()
 
 # doprava
+run_m (1 * rych, -1 * rych, -1 * rych, 1 * rych)
+stop_m()
+
+# dopředu
 run_m (1 * rych, 1 * rych, -1 * rych, -1 * rych)
 stop_m()
 
-# dozadu
+# doleva
 run_m (-1 * rych, 1 * rych, 1 * rych, -1 * rych)
 stop_m()
 
