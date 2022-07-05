@@ -1,0 +1,15 @@
+# # dozadu
+# run_m (-1 * rych, -1 * rych, 1 * rych, 1 * rych)
+# stop_m()
+
+# # doprava
+# run_m (1 * rych, -1 * rych, -1 * rych, 1 * rych)
+# stop_m()
+
+# # dopředu
+# run_m (1 * rych, 1 * rych, -1 * rych, -1 * rych)
+# stop_m()
+
+# # doleva
+# run_m (-1 * rych, 1 * rych, 1 * rych, -1 * rych)
+# stop_m()
