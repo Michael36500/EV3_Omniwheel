@@ -15,8 +15,6 @@ m_ru = Motor(Port.C)
 m_rd = Motor(Port.B)
 m_ld = Motor(Port.D)
 
-m_lu.dc(-30)
-wait(1000)
 # where = ve stupních, dokola
 # rychlost = rychlost
 # kolik = o kolik se posune (součet otočení všech motorů)
@@ -26,6 +24,9 @@ def run_m (lu, ru, rd, ld):
     global m_rd
     global m_ld
     
+    rd *= -1
+    ld *= -1
+
     m_lu.dc(lu)
     m_ru.dc(ru)
     m_rd.dc(rd)
@@ -50,34 +51,18 @@ def move(angle, rych):
     global m_rd
     global m_ld
 
-    rychx = rych * math.cos(angle)
-    rychy = rych * math.sin(angle)
-    run_m (rychx + rychy, rychx - rychy, -1 * (rychx + rychy), -1 * (rychx - rychy))
+    toc_ang = angle + 45
+    toc_ang %= 360
 
-# def move(angle, rych):
-#     rychx =
+    # rychx =
+    # rychy = 
 
-move(45, 30)
-# wait(5000)
-# x = 0
-# y = 20
-# while True:
-#     x = x % 40
-#     y = y % 40
+
     
-#     x += 2
-#     y += 2
+    # ru a ld jsou \, rd a lu jsou /
 
-#     print(x, y)
+    # run_m ()
+    wait(2000)
 
-#     run_m (x,y, x*-1, y*-1)
-
-#     wait(10)
-# rych = 20
-# while True:
-#     for phase in range (0, 1, 0.01):
-#         run_m(phase)
-
-
-#         wait(100)
-
+run_m(20,20,20,20)
+wait(5000)
