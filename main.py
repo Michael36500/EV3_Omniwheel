@@ -45,24 +45,57 @@ def stop_m ():
     m_ld.hold()
     wait(500)
 # rych = rychlost
-def move(angle, rych):
-    global m_lu
-    global m_ru
-    global m_rd
-    global m_ld
+# def move(angle, rych):
+#     global m_lu
+#     global m_ru
+#     global m_rd
+#     global m_ld
 
-    toc_ang = angle + 45
-    toc_ang %= 360
+#     toc_ang = angle + 45
+#     toc_ang %= 360
+# def move(theta, power, turn):
+#     sin = math.sin(theta - math.pi/4)
+#     cos = math.cos(theta - math.pi/4)
+#     maxi = max(abs(sin), abs(sin))
 
-    # rychx =
-    # rychy = 
+#     lu = int(power * cos / maxi + turn)
+#     ru = int(power * sin / maxi - turn)
+#     rd = int(power * sin / maxi + turn)
+#     ld = int(power * cos / maxi - turn)
+
+#     print(lu, ru, rd, ld)
+
+#     run_m(lu, ru, rd, ld)
+#     # rychx =
+#     # rychy = 
 
 
     
-    # ru a ld jsou \, rd a lu jsou /
+#     # ru a ld jsou \, rd a lu jsou /
 
-    # run_m ()
-    wait(2000)
+#     # run_m ()
+#     wait(2000)
 
-run_m(20,20,20,20)
-wait(5000)
+# run_m(20,20,20,20)
+# ud - +dopředu -dozadu
+# lr - vlevo vpravo (+ vpravo, - vlevo)
+# rot - otáčení (+ posměru/doprava, - protisměru/doleva)
+def move(ud, lr, rot):
+    lu = ud + lr + rot
+    ru = ud - lr - rot
+    rd = ud + lr - rot
+    ld = ud - lr + rot
+
+    run_m(lu, ru, rd, ld)
+
+
+
+
+move(20, 0, 0)
+wait(2000)
+move(-20, 0, 0)
+wait(2000)
+move(0, 0, 20)
+wait(2000)
+move(0, 0, -20)
+wait(2000)
