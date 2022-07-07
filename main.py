@@ -15,6 +15,12 @@ m_ru = Motor(Port.C)
 m_rd = Motor(Port.B)
 m_ld = Motor(Port.D)
 
+a_lu = []
+a_ru = []
+a_rd = []
+a_ld = []
+
+
 # where = ve stupních, dokola
 # rychlost = rychlost
 # kolik = o kolik se posune (součet otočení všech motorů)
@@ -23,6 +29,11 @@ def run_m (lu, ru, rd, ld):
     global m_ru
     global m_rd
     global m_ld
+
+    global a_lu
+    global a_ru
+    global a_rd
+    global a_ld
     
     rd *= -1
     ld *= -1
@@ -31,6 +42,23 @@ def run_m (lu, ru, rd, ld):
     m_ru.dc(ru)
     m_rd.dc(rd)
     m_ld.dc(ld)
+
+    a_lu.append(m_lu.speed())
+    a_ru.append(m_ru.speed())
+    a_rd.append(m_rd.speed())
+    a_ld.append(m_ld.speed())
+
+    print()
+
+    print("lu", lu, end = "   ")
+    print("ru", ru, end = "   ")
+    print("rd", rd, end = "   ")
+    print("ld", ld, end = "   ")
+    
+    print()
+    print()
+
+
     wait(1000)
 
 def stop_m ():
@@ -44,43 +72,9 @@ def stop_m ():
     m_rd.hold()
     m_ld.hold()
     wait(500)
-# rych = rychlost
-# def move(angle, rych):
-#     global m_lu
-#     global m_ru
-#     global m_rd
-#     global m_ld
-
-#     toc_ang = angle + 45
-#     toc_ang %= 360
-# def move(theta, power, turn):
-#     sin = math.sin(theta - math.pi/4)
-#     cos = math.cos(theta - math.pi/4)
-#     maxi = max(abs(sin), abs(sin))
-
-#     lu = int(power * cos / maxi + turn)
-#     ru = int(power * sin / maxi - turn)
-#     rd = int(power * sin / maxi + turn)
-#     ld = int(power * cos / maxi - turn)
-
-#     print(lu, ru, rd, ld)
-
-#     run_m(lu, ru, rd, ld)
-#     # rychx =
-#     # rychy = 
 
 
-    
-#     # ru a ld jsou \, rd a lu jsou /
-
-#     # run_m ()
-#     wait(2000)
-
-# run_m(20,20,20,20)
-# ud - +dopředu -dozadu
-# lr - vlevo vpravo (+ vpravo, - vlevo)
-# rot - otáčení (+ posměru/doprava, - protisměru/doleva)
-def move(ud, lr, rot):
+def UDLR(ud, lr, rot):
     lu = ud + lr + rot
     ru = ud - lr - rot
     rd = ud + lr - rot
@@ -88,14 +82,20 @@ def move(ud, lr, rot):
 
     run_m(lu, ru, rd, ld)
 
+def move(theta, power):
+    # sin = math.sin(theta - math.pi / 4)
+    # cos = math.cos(theta - math.pi / 4)
+    sin = math.sin(theta - 3.14 / 4)
+    cos = math.cos(theta - 3.14 / 4)
+
+    run_m(power * cos, power * sin, power * cos, power * sin)
 
 
+rot = 0
+for _ in range (50):
+    # print(rot)
+    rot += 1
+    move(rot, 30)
+    
+for a in 
 
-move(20, 0, 0)
-wait(2000)
-move(-20, 0, 0)
-wait(2000)
-move(0, 0, 20)
-wait(2000)
-move(0, 0, -20)
-wait(2000)
