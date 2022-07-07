@@ -92,10 +92,20 @@ def move(theta, power):
 
 
 rot = 0
-for _ in range (50):
+for _ in range (100):
     # print(rot)
     rot += 1
     move(rot, 30)
-    
-for a in 
+
+
+def avg(lst, name):
+    sum = 0
+    for a in lst:
+        sum += a
+    print(name, "   ", sum / len(lst))
+
+avg(a_lu, "lu")
+avg(a_ru, "ru")
+avg(a_rd, "rd")
+avg(a_ld, "ld")
 
