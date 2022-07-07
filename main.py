@@ -1,4 +1,5 @@
 #!/usr/bin/env pybricks-micropython
+# !! please, all comments are in czech...
 from pybricks.hubs import EV3Brick
 from pybricks.ev3devices import Motor, ColorSensor, TouchSensor
 from pybricks.parameters import Port
@@ -15,25 +16,17 @@ m_ru = Motor(Port.C)
 m_rd = Motor(Port.B)
 m_ld = Motor(Port.D)
 
-a_lu = []
-a_ru = []
-a_rd = []
-a_ld = []
-
-
-# where = ve stupních, dokola
-# rychlost = rychlost
-# kolik = o kolik se posune (součet otočení všech motorů)
+# funkce, co roztočí motory podle vstupu
 def run_m (lu, ru, rd, ld):
     global m_lu
     global m_ru
     global m_rd
     global m_ld
 
-    global a_lu
-    global a_ru
-    global a_rd
-    global a_ld
+    lu = round(lu)
+    ru = round(ru)
+    rd = round(rd)
+    ld = round(ld)    
     
     rd *= -1
     ld *= -1
@@ -43,29 +36,7 @@ def run_m (lu, ru, rd, ld):
     m_rd.dc(rd)
     m_ld.dc(ld)
 
-    a_lu.append(m_lu.speed())
-    a_ru.append(m_ru.speed())
-    a_rd.append(m_rd.speed())
-    a_ld.append(m_ld.speed())
-
-    # print("lu", m_lu.speed(), end = "   ")
-    # print("ru", m_ru.speed(), end = "   ")
-    # print("rd", m_rd.speed(), end = "   ")
-    # print("ld", m_ld.speed(), end = "   ")
-
-    print()
-
-    # print("lu", lu, end = "   ")
-    # print("ru", ru, end = "   ")
-    # print("rd", rd, end = "   ")
-    # print("ld", ld, end = "   ")
-    
-    # print()
-    # print()
-
-
-    wait(1000)
-
+# funkce, co zastaví motory
 def stop_m ():
     global m_lu
     global m_ru
@@ -76,9 +47,8 @@ def stop_m ():
     m_ru.hold()
     m_rd.hold()
     m_ld.hold()
-    wait(500)
 
-
+# funkce z vstupu se pohne nahoru/dolů/otočí se
 def UDLR(ud, lr, rot):
     lu = ud + lr + rot
     ru = ud - lr - rot
@@ -87,48 +57,31 @@ def UDLR(ud, lr, rot):
 
     run_m(lu, ru, rd, ld)
 
+# funkce z vstupní úhle se pohne tím úhlem a tou rychlostí
 def move(theta, power):
     theta = math.radians(theta)     #!!!!!!!!!!!!!!!!!!!! FAKING RADIANS
-    # theta = theta * (180 / 3.14)
-    # sin = math.sin(theta - math.pi / 4)
-    # # cos = math.cos(theta - math.pi / 4)
-    # sin = math.sin(theta - 3.14 / 4)
-    # cos = math.cos(theta - 3.14 / 4)
-
-    # run_m(power * cos, power * sin, power * cos, power * sin)
 
     vx = power * math.sin(theta)
     vy = power * math.cos(theta)
-    print(vx, vy)
-    # run_m(vx - vy, vy + vy, vx - vy, vx + vy)
+    # print(vx, vy)
     UDLR(vx, vy, 0)
 
-def avg(lst, name):
-    sum = 0
-    for a in lst:
-        sum += a
-    print(name, "   ", sum / len(lst))
 
-# rot = 0
-# for _ in range (100):
-#     # print(rot)
-#     rot += 1
-#     move(rot, 30)
+# some code
+# for _ in range (20):
+    # move(0, 40)
+    # wait(1000)
+    # move(90, 40)
+    # wait(1000)
+    # move(180, 40)
+    # wait(1000)
+    # move(270, 40)
+    # wait(1000)
+for _ in range(10):
+    for angle in range(360):
+        move(angle, 100)
+    for angle in range(360):
+        move(-1 * angle, 100)
+    stop_m()
 
-for _ in range (20):
-    move(0, 40)
-    wait(1000)
-    move(90, 40)
-    wait(1000)
-    move(180, 40)
-    wait(1000)
-    move(270, 40)
-    wait(1000)
-
-
-
-avg(a_lu, "lu")
-avg(a_ru, "ru")
-avg(a_rd, "rd")
-avg(a_ld, "ld")
 
