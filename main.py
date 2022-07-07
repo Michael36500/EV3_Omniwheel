@@ -48,15 +48,20 @@ def run_m (lu, ru, rd, ld):
     a_rd.append(m_rd.speed())
     a_ld.append(m_ld.speed())
 
+    # print("lu", m_lu.speed(), end = "   ")
+    # print("ru", m_ru.speed(), end = "   ")
+    # print("rd", m_rd.speed(), end = "   ")
+    # print("ld", m_ld.speed(), end = "   ")
+
     print()
 
-    print("lu", lu, end = "   ")
-    print("ru", ru, end = "   ")
-    print("rd", rd, end = "   ")
-    print("ld", ld, end = "   ")
+    # print("lu", lu, end = "   ")
+    # print("ru", ru, end = "   ")
+    # print("rd", rd, end = "   ")
+    # print("ld", ld, end = "   ")
     
-    print()
-    print()
+    # print()
+    # print()
 
 
     wait(1000)
@@ -83,26 +88,44 @@ def UDLR(ud, lr, rot):
     run_m(lu, ru, rd, ld)
 
 def move(theta, power):
+    theta = math.radians(theta)     #!!!!!!!!!!!!!!!!!!!! FAKING RADIANS
+    # theta = theta * (180 / 3.14)
     # sin = math.sin(theta - math.pi / 4)
-    # cos = math.cos(theta - math.pi / 4)
-    sin = math.sin(theta - 3.14 / 4)
-    cos = math.cos(theta - 3.14 / 4)
+    # # cos = math.cos(theta - math.pi / 4)
+    # sin = math.sin(theta - 3.14 / 4)
+    # cos = math.cos(theta - 3.14 / 4)
 
-    run_m(power * cos, power * sin, power * cos, power * sin)
+    # run_m(power * cos, power * sin, power * cos, power * sin)
 
-
-rot = 0
-for _ in range (100):
-    # print(rot)
-    rot += 1
-    move(rot, 30)
-
+    vx = power * math.sin(theta)
+    vy = power * math.cos(theta)
+    print(vx, vy)
+    # run_m(vx - vy, vy + vy, vx - vy, vx + vy)
+    UDLR(vx, vy, 0)
 
 def avg(lst, name):
     sum = 0
     for a in lst:
         sum += a
     print(name, "   ", sum / len(lst))
+
+# rot = 0
+# for _ in range (100):
+#     # print(rot)
+#     rot += 1
+#     move(rot, 30)
+
+for _ in range (20):
+    move(0, 40)
+    wait(1000)
+    move(90, 40)
+    wait(1000)
+    move(180, 40)
+    wait(1000)
+    move(270, 40)
+    wait(1000)
+
+
 
 avg(a_lu, "lu")
 avg(a_ru, "ru")
