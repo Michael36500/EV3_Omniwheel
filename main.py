@@ -21,7 +21,7 @@ m_ld = Motor(Port.D)
 # setup senzory
 touchl = TouchSensor(Port.S1)
 ultrl = UltrasonicSensor(Port.S2)
-ultrr = UltrasonicSensor(Port.S3)
+ultrr = UltrasonicSensor(Port.S3) 
 touchr = TouchSensor(Port.S4)
 
 
@@ -31,16 +31,23 @@ while True:
 
     if touchl.pressed() == True or touchr.pressed() == True:
         print("pressed")
-        # ano 
-            # jestli lepší vlevo vpravo
-                # vlevo
-                    # start posun vlevo
-                    # while vzdálenost < 10 cm
-                        # péass
-                # vpravo
-                    # start posun vpravo
-                    # while vzdálenost < 10 cm
-                        # péass
+        fn.move(180, 40)
+        wait(500)
+        if ultrl.distance() < ultrr.distance():
+            # znamená jedu doprava
+            print("doprava")
+            fn.move(90, 40)
+            while ultrr.distance() > 70:
+                print(ultrr.distance())
+                fn.move(90, 40)
+        else:
+            # znamená jedu doleva
+            print("doleva")
+
+            fn.move(270, 40)
+            while ultrl.distance() > 70:
+                print(ultrl.distance())
+                fn.move(270, 40)
 
 
 

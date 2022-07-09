@@ -32,7 +32,7 @@ def run_m (lu, ru, rd, ld):
     ld *= -1
 
     m_lu.dc(lu)
-    m_ru.dc(ru)
+    m_ru.dc(ru);
     m_rd.dc(rd)
     m_ld.dc(ld)
 
@@ -57,6 +57,16 @@ def UDLR(ud, lr, rot):
 
     run_m(lu, ru, rd, ld)
 
+# otočení...
+def rot(rot):
+    lu = +1 * rot
+    ru = -1 * rot
+    rd = -1 * rot
+    ld = +1 * rot
+
+    run_m(lu, ru, rd, ld)
+
+
 # funkce z vstupní úhle se pohne tím úhlem a tou rychlostí
 def move(theta, power):
     theta = theta + 90
@@ -79,10 +89,12 @@ def move(theta, power):
     # move(270, 40)
     # wait(1000)
 # for _ in range(10):
-    # for angle in range(360):
-    #     move(angle, 100)
-    # for angle in range(360):
-    #     move(-1 * angle, 100)
-    # stop_m()
+#     for angle in range(360):
+#         move(angle, 100)
+#     for angle in range(360):
+#         move(-1 * angle, 100)
+#     stop_m()
 
 
+# move(90, 25)
+# wait(10000)
