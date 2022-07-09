@@ -21,25 +21,17 @@ m_ld = Motor(Port.D)
 
 while True:
     buts = ev3.buttons.pressed()
-    if "LEFT" in str(buts):
-        fn.move(0, 50)
-        # wait(500)
+    if ".LEFT" in str(buts):
+        fn.UDLR(50,0,0)
         
-    if "DOWN" in str(buts):
-        fn.move(90, 50)
-        # wait(500)
+    if ".DOWN" in str(buts):
+        fn.UDLR(0,0,-100)
         
-    if "RIGHT" in str(buts):
-        fn.move(180, 50)
-        # wait(500)
+    if ".RIGHT" in str(buts):
+        fn.UDLR(-50,0,0)
         
-    if "UP" in str(buts):
-        fn.move(270, 50)
-        # wait(500)
-        
-    if "CENTER" in str(buts):
-        fn.rot(100)
-        # wait(500)
+    if ".UP" in str(buts):
+        fn.UDLR(0,0,100)
         
     print(buts)
     fn.stop_m()
