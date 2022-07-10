@@ -26,13 +26,13 @@ def run_m (lu, ru, rd, ld):
     lu = round(lu)
     ru = round(ru)
     rd = round(rd)
-    ld = round(ld)    
+    ld = round(ld)
     
     rd *= -1
     ld *= -1
 
     m_lu.dc(lu)
-    m_ru.dc(ru);
+    m_ru.dc(ru)
     m_rd.dc(rd)
     m_ld.dc(ld)
 

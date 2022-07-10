@@ -8,7 +8,6 @@ from pybricks.parameters import Port
 from pybricks.tools import wait, StopWatch
 import sys
 
-from scipy.misc import derivative
 
 import functions as fn
 
@@ -61,11 +60,12 @@ print(targ)
 
 previous_er = 0
 integ = 0
+base_speed = 25
 
 while True:
     refl = cols.reflection()
 
-    p = 4.2
+    p = 8
     i = 0.008
     d = 0.01
 
@@ -73,7 +73,11 @@ while True:
     integ = integ + error
     deriv = error - previous_er
 
+    turn = p * error + i * integ + d * deriv
+    rm = base_speed + turn
+    lm = base_speed - turn
 
+    run_m(lm, rm, rm, lm)
 
 
 
