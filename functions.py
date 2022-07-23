@@ -79,15 +79,15 @@ def move(theta, power):
 
 
 # some code
-# for _ in range (20):
-    # move(0, 40)
-    # wait(1000)
-    # move(90, 40)
-    # wait(1000)
-    # move(180, 40)
-    # wait(1000)
-    # move(270, 40)
-    # wait(1000)
+# for _ in range (2):
+#     move(0, 40)
+#     wait(1000)
+#     move(90, 40)
+#     wait(1000)
+#     move(180, 40)
+#     wait(1000)
+#     move(270, 40)
+#     wait(1000)
 # for _ in range(10):
 #     for angle in range(360):
 #         move(angle, 100)

@@ -22,19 +22,19 @@ m_ld = Motor(Port.D)
 while True:
     buts = ev3.buttons.pressed()
     if "LEFT" in str(buts):
-        fn.move(0, 50)
+        fn.move(0, 80)
         # wait(500)
         
     if "DOWN" in str(buts):
-        fn.move(90, 50)
+        fn.move(90, 80)
         # wait(500)
         
     if "RIGHT" in str(buts):
-        fn.move(180, 50)
+        fn.move(180, 80)
         # wait(500)
         
     if "UP" in str(buts):
-        fn.move(270, 50)
+        fn.move(270, 80)
         # wait(500)
         
     if "CENTER" in str(buts):
